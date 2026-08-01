@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" th:href="@{/style/style.css}">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+        <title>Arqea</title>
+    </head>
+<body>
+ 
+<h1>ArqeaDB</h1>
+ 
+<div class="toggle-grupo">
+    <button class="toggle-btn activo" data-target="tabla-artefactos" onclick="mostrarTabla(this)">Artefactos</button>
+    <button class="toggle-btn" data-target="tabla-lideres" onclick="mostrarTabla(this)">Lideres</button>
+    <button class="toggle-btn" data-target="tabla-equipos" onclick="mostrarTabla(this)">Equipos</button>
+    <button class="toggle-btn" data-target="tabla-clases" onclick="mostrarTabla(this)">Clases</button>
+    <button class="toggle-btn" data-target="tabla-museos" onclick="mostrarTabla(this)">Museos</button>
+    <button class="toggle-btn" data-target="tabla-yacimientos" onclick="mostrarTabla(this)">Yacimientos</button>
+</div>
+ 
+<!-- Artefactos -->
+<div id="tabla-artefactos" class="tabla-seccion activo">
+    <a th:href="@{/artefactos/nuevo}">+ Nuevo artefacto</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Descubridores</th>
+            <th>Yacimiento</th>
+            <th>Museo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="art : ${artefactos}"  th:attr="onclick=|mostrarImagen('${art.img}')|">
+            <td th:text="${art.nombre}"></td>
+            <td th:text="${art.descripcion}"></td>
+            <td th:text="${art.descubridores}"></td>
+            <td th:text="${art.yacimiento}"></td>
+            <td th:text="${art.museo}"></td>
+            <td>
+                <a th:href="@{/artefactos/editar/{id}(id=${art.idArtefacto})}">Editar</a>
+                |
+                <a th:href="@{/artefactos/eliminar/{id}(id=${art.idArtefacto})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<!-- Lideres -->
+<div id="tabla-lideres" class="tabla-seccion">
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l : ${lideres}">
+            <td th:text="${l.nombre}"></td>
+            <td th:text="${l.apellido}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<!-- Equipos -->
+<div id="tabla-equipos" class="tabla-seccion">
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre del equipo</th>
+            <th>Lider</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="eq : ${equipos}">
+            <td th:text="${eq.nombre}"></td>
+            <td th:text="${eq.lider}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<!-- Clases -->
+<div id="tabla-clases" class="tabla-seccion">
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${clases}">
+            <td th:text="${c.nombre}"></td>
+            <td th:text="${c.descripcion}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<!-- Museos -->
+<div id="tabla-museos" class="tabla-seccion">
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre del museo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m : ${museos}">
+            <td th:text="${m.nombre}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<!-- Yacimientos -->
+<div id="tabla-yacimientos" class="tabla-seccion">
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Latitud</th>
+            <th>Longitud</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="y : ${yacimientos}">
+            <td th:text="${y.nombre}"></td>
+            <td th:text="${y.latitud}"></td>
+            <td th:text="${y.longitud}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+ 
+<div id="imagen">
+    <img id="imagen-preview" src="/img/sin-imagen.png" alt="Vista previa" width="300" height="300"/>
+</div>
+
+<script th:src="@{/script/script.js}"></script>
+ 
+</body>
+</html>

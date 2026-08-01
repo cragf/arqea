@@ -2,44 +2,44 @@ package com.robert.arqea.models;
 
 public class Museo {
 
-    private Integer idMuseo;
-    private String nombreMuseo;
+    private Integer id;
+    private String nombre;
 
     public Museo() {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Museo(Integer idMuseo, String nombreMuseo) {
-        this.idMuseo = idMuseo;
-        this.nombreMuseo = nombreMuseo;
+    public Museo(Integer id, String nombre) {
+        this.id = id;
+        this.nombre = nombre;
     }
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Museo(String nombreMuseo) {
-        this(null, nombreMuseo);
+    public Museo(String nombre) {
+        this(null, nombre);
     }
 
-    public Integer getIdMuseo() {
-        return idMuseo;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdMuseo(Integer idMuseo) {
-        this.idMuseo = idMuseo;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getNombreMuseo() {
-        return nombreMuseo;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreMuseo(String nombreMuseo) {
-        this.nombreMuseo = nombreMuseo;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     @Override
     public String toString() {
         return "Museo{" +
-                "idMuseo=" + idMuseo +
-                ", nombreMuseo='" + nombreMuseo + '\'' +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 }

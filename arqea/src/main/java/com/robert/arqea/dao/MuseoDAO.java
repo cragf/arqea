@@ -43,7 +43,7 @@ public class MuseoDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, museo.getNombreMuseo());
+            ps.setString(1, museo.getNombre());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -59,8 +59,8 @@ public class MuseoDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, museo.getNombreMuseo());
-            ps.setInt(2, museo.getIdMuseo());
+            ps.setString(1, museo.getNombre());
+            ps.setInt(2, museo.getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {

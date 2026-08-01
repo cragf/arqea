@@ -2,7 +2,7 @@ package com.robert.arqea.models;
  
 public class Artefacto {
  
-    private Integer idArtefacto;
+    private Integer id;
     private String nombre;
     private String descripcion;
     private String descubridores; // FK -> nombre del equipo
@@ -17,10 +17,10 @@ public class Artefacto {
     }
  
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Artefacto(Integer idArtefacto, String nombre, String descripcion, String descubridores,
+    public Artefacto(Integer id, String nombre, String descripcion, String descubridores,
                       Boolean encamino, String museo, String yacimiento, String clave,
                       String img, String clase) {
-        this.idArtefacto = idArtefacto;
+        this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.descubridores = descubridores;
@@ -45,12 +45,12 @@ public class Artefacto {
         this(null, nombre, descripcion, descubridores, encamino, null, yacimiento, clave, null, clase);
     }
  
-    public Integer getIdArtefacto() {
-        return idArtefacto;
+    public Integer getId() {
+        return id;
     }
  
-    public void setIdArtefacto(Integer idArtefacto) {
-        this.idArtefacto = idArtefacto;
+    public void setId(Integer id) {
+        this.id = id;
     }
  
     public String getNombre() {
@@ -128,7 +128,7 @@ public class Artefacto {
     @Override
     public String toString() {
         return "Artefacto{" +
-                "idArtefacto=" + idArtefacto +
+                "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", descubridores='" + descubridores + '\'' +

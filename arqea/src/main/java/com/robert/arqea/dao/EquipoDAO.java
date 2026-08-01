@@ -44,7 +44,7 @@ public class EquipoDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
  
-            ps.setString(1, equipo.getNombreEquipo());
+            ps.setString(1, equipo.getNombre());
             ps.setString(2, equipo.getLider());
             ps.executeUpdate();
  
@@ -61,9 +61,9 @@ public class EquipoDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
  
-            ps.setString(1, equipo.getNombreEquipo());
+            ps.setString(1, equipo.getNombre());
             ps.setString(2, equipo.getLider());
-            ps.setInt(3, equipo.getIdEquipo());
+            ps.setInt(3, equipo.getId());
             ps.executeUpdate();
  
         } catch (SQLException e) {

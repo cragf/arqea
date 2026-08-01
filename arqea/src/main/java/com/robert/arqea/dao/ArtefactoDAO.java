@@ -14,7 +14,8 @@ public class ArtefactoDAO implements DAOinterfaz {
     public ArrayList<Artefacto> listar() {
         ArrayList<Artefacto> lista = new ArrayList<>();
 
-        String sql = q.Leer("listar", "artefactos");
+        String sql = q.Leer("artefacto", "listar");
+        System.out.println("SQL listar artefactos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -86,7 +87,7 @@ public class ArtefactoDAO implements DAOinterfaz {
             ps.setString(7, artefacto.getClave());
             ps.setString(8, artefacto.getImg());
             ps.setString(9, artefacto.getClase());
-            ps.setInt(10, artefacto.getIdArtefacto());
+            ps.setInt(10, artefacto.getId());
             ps.executeUpdate();
 
         } catch (SQLException e) {
