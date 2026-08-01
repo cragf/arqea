@@ -63,7 +63,7 @@ public class LiderDAO implements DAOinterfaz {
 
             ps.setString(1, lider.getNombre());
             ps.setString(2, lider.getApellido());
-            ps.setInt(3, lider.getId());
+            ps.setInt(3, lider.getIdLider());
             ps.executeUpdate();
 
         } catch (SQLException e) {

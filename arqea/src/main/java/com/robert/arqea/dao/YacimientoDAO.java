@@ -81,7 +81,7 @@ public class YacimientoDAO implements DAOinterfaz {
                 ps.setNull(3, Types.DOUBLE);
             }
 
-            ps.setInt(4, yacimiento.getId());
+            ps.setInt(4, yacimiento.getIdYacimiento());
             ps.executeUpdate();
 
         } catch (SQLException e) {

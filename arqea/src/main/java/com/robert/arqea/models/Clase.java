@@ -2,55 +2,55 @@ package com.robert.arqea.models;
 
 public class Clase {
 
-    private Integer id;
-    private String nombre;
-    private String descripcion;
+    private Integer idClase;
+    private String nombreClase;
+    private String descripcionClase;
 
     public Clase() {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Clase(Integer id, String nombre, String descripcion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+    public Clase(Integer idClase, String nombreClase, String descripcionClase) {
+        this.idClase = idClase;
+        this.nombreClase = nombreClase;
+        this.descripcionClase = descripcionClase;
     }
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Clase(String nombre, String descripcion) {
-        this(null, nombre, descripcion);
+    public Clase(String nombreClase, String descripcionClase) {
+        this(null, nombreClase, descripcionClase);
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdClase() {
+        return idClase;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdClase(Integer idClase) {
+        this.idClase = idClase;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreClase() {
+        return nombreClase;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreClase(String nombreClase) {
+        this.nombreClase = nombreClase;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescripcionClase() {
+        return descripcionClase;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescripcionClase(String descripcionClase) {
+        this.descripcionClase = descripcionClase;
     }
 
     @Override
     public String toString() {
         return "Clase{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
+                "idClase=" + idClase +
+                ", nombreClase='" + nombreClase + '\'' +
+                ", descripcionClase='" + descripcionClase + '\'' +
                 '}';
     }
 }

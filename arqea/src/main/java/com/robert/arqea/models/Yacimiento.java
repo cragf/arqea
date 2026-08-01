@@ -2,7 +2,7 @@ package com.robert.arqea.models;
 
 public class Yacimiento {
 
-    private Integer id;
+    private Integer idYacimiento;
     private String nombre;
     private Double latitud;  // nullable en BD (coordenadas POINT admite NULL)
     private Double longitud; // nullable en BD (coordenadas POINT admite NULL)
@@ -11,8 +11,8 @@ public class Yacimiento {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Yacimiento(Integer id, String nombre, Double latitud, Double longitud) {
-        this.id = id;
+    public Yacimiento(Integer idYacimiento, String nombre, Double latitud, Double longitud) {
+        this.idYacimiento = idYacimiento;
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
@@ -28,12 +28,12 @@ public class Yacimiento {
         this(null, nombre, null, null);
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdYacimiento() {
+        return idYacimiento;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdYacimiento(Integer idYacimiento) {
+        this.idYacimiento = idYacimiento;
     }
 
     public String getNombre() {
@@ -63,7 +63,7 @@ public class Yacimiento {
     @Override
     public String toString() {
         return "Yacimiento{" +
-                "id=" + id +
+                "idYacimiento=" + idYacimiento +
                 ", nombre='" + nombre + '\'' +
                 ", latitud=" + latitud +
                 ", longitud=" + longitud +

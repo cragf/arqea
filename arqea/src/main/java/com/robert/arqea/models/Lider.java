@@ -2,7 +2,7 @@ package com.robert.arqea.models;
 
 public class Lider {
 
-    private Integer id;
+    private Integer idLider;
     private String nombre;
     private String apellido;
 
@@ -10,8 +10,8 @@ public class Lider {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Lider(Integer id, String nombre, String apellido) {
-        this.id = id;
+    public Lider(Integer idLider, String nombre, String apellido) {
+        this.idLider = idLider;
         this.nombre = nombre;
         this.apellido = apellido;
     }
@@ -21,12 +21,12 @@ public class Lider {
         this(null, nombre, apellido);
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdLider() {
+        return idLider;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdLider(Integer idLider) {
+        this.idLider = idLider;
     }
 
     public String getNombre() {
@@ -48,7 +48,7 @@ public class Lider {
     @Override
     public String toString() {
         return "Lider{" +
-                "id=" + id +
+                "idLider=" + idLider +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 '}';

@@ -87,7 +87,7 @@ public class ArtefactoDAO implements DAOinterfaz {
             ps.setString(7, artefacto.getClave());
             ps.setString(8, artefacto.getImg());
             ps.setString(9, artefacto.getClase());
-            ps.setInt(10, artefacto.getId());
+            ps.setInt(10, artefacto.getIdArtefacto());
             ps.executeUpdate();
 
         } catch (SQLException e) {

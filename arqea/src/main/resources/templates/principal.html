@@ -80,7 +80,7 @@
         </thead>
         <tbody>
         <tr th:each="eq : ${equipos}">
-            <td th:text="${eq.nombre}"></td>
+            <td th:text="${eq.nombreEquipo}"></td>
             <td th:text="${eq.lider}"></td>
         </tr>
         </tbody>
@@ -98,8 +98,8 @@
         </thead>
         <tbody>
         <tr th:each="c : ${clases}">
-            <td th:text="${c.nombre}"></td>
-            <td th:text="${c.descripcion}"></td>
+            <td th:text="${c.nombreClase}"></td>
+            <td th:text="${c.descripcionClase}"></td>
         </tr>
         </tbody>
     </table>
@@ -115,7 +115,7 @@
         </thead>
         <tbody>
         <tr th:each="m : ${museos}">
-            <td th:text="${m.nombre}"></td>
+            <td th:text="${m.nombreMuseo}"></td>
         </tr>
         </tbody>
     </table>

@@ -44,8 +44,8 @@ public class ClaseDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, clase.getNombre());
-            ps.setString(2, clase.getDescripcion());
+            ps.setString(1, clase.getNombreClase());
+            ps.setString(2, clase.getDescripcionClase());
             ps.executeUpdate();
 
         } catch (SQLException e) {
@@ -61,9 +61,9 @@ public class ClaseDAO implements DAOinterfaz {
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setString(1, clase.getNombre());
-            ps.setString(2, clase.getDescripcion());
-            ps.setInt(3, clase.getId());
+            ps.setString(1, clase.getNombreClase());
+            ps.setString(2, clase.getDescripcionClase());
+            ps.setInt(3, clase.getIdClase());
             ps.executeUpdate();
 
         } catch (SQLException e) {

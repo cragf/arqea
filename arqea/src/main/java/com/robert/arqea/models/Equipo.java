@@ -1,57 +1,57 @@
 package com.robert.arqea.models;
- 
+
 public class Equipo {
- 
-    private Integer id;
-    private String nombre;
-    private String lider; // FK -> se muestra como nombre del lider, no como id
- 
-    public Equipo() {
-    }
- 
+
+    private Integer idEquipo;
+    private String nombreEquipo;
+    private String lider; // FK -> Lider.idLider
+
+    
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Equipo(Integer id, String nombre, String lider) {
-        this.id = id;
-        this.nombre = nombre;
+    public Equipo(Integer idEquipo, String nombreEquipo, String lider) {
+        this.idEquipo = idEquipo;
+        this.nombreEquipo = nombreEquipo;
         this.lider = lider;
     }
- 
+    public Equipo() {
+    }
+
+
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Equipo(String nombre, String lider) {
-        this(null, nombre, lider);
+    public Equipo(String nombreEquipo, String lider) {
+        this(null, nombreEquipo, lider);
     }
- 
-    public Integer getId() {
-        return id;
+
+    public Integer getIdEquipo() {
+        return idEquipo;
     }
- 
-    public void setId(Integer id) {
-        this.id = id;
+
+    public void setIdEquipo(Integer idEquipo) {
+        this.idEquipo = idEquipo;
     }
- 
-    public String getNombre() {
-        return nombre;
+
+    public String getNombreEquipo() {
+        return nombreEquipo;
     }
- 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
     }
- 
+
     public String getLider() {
         return lider;
     }
- 
+
     public void setLider(String lider) {
         this.lider = lider;
     }
- 
+
     @Override
     public String toString() {
         return "Equipo{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", lider='" + lider + '\'' +
+                "idEquipo=" + idEquipo +
+                ", nombreEquipo='" + nombreEquipo + '\'' +
+                ", lider=" + lider +
                 '}';
     }
 }
- 
