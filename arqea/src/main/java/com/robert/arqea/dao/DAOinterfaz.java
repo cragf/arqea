@@ -4,6 +4,7 @@ package com.robert.arqea.dao;
 import java.util.ArrayList;
 
 public interface DAOinterfaz {
+    public final Querys q = new Querys();
     public ArrayList<?> listar();
     public void insertar(Object obj);
     public void actualizar(Object obj);

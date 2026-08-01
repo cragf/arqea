@@ -1,0 +1,18 @@
+>>Lider
+UPDATE lideres SET habilitado = 0 WHERE IDlider = ?
+ 
+>>Equipo
+UPDATE equipos SET habilitado = 0 WHERE IDequipo = ?
+ 
+>>Clase
+UPDATE clases SET habilitado = 0 WHERE IDclase = ?
+ 
+>>Museo
+UPDATE museos SET habilitado = 0 WHERE IDmuseo = ?
+ 
+>>Yacimiento
+UPDATE yacimientos SET habilitado = 0 WHERE IDyacimiento = ?
+ 
+>>Artefacto
+UPDATE artefactos SET habilitado = 0 WHERE IDartefacto = ?
+ 

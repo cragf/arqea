@@ -1,0 +1,8 @@
+>>ArtefactoMuseo
+UPDATE artefactos SET museo = ? WHERE IDartefacto = ?
+
+>>ArtefactoYacimiento
+UPDATE artefactos SET yacimiento = ? WHERE IDartefacto = ?
+
+>>Equipo
+UPDATE equipos SET lider = ? WHERE IDequipo = ?

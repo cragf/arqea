@@ -1,0 +1,39 @@
+>>Lider
+UPDATE lideres
+SET nombre = ?, apellido = ?
+WHERE IDlider = ?
+
+>>Equipo
+UPDATE equipos
+SET nombre_equipo = ?,
+    lider = (SELECT IDlider FROM lideres WHERE CONCAT(nombre, ' ', apellido) = ?)
+WHERE IDequipo = ?
+
+>>Clase
+UPDATE clases
+SET nombre_clase = ?, descripcion_clase = ?
+WHERE IDclase = ?
+
+>>Museo
+UPDATE museos
+SET nombre_museo = ?
+WHERE IDmuseo = ?
+
+>>Yacimiento
+UPDATE yacimientos
+SET nombre = ?,
+    coordenadas = ST_PointFromText(CONCAT('POINT(', ?, ' ', ?, ')'))
+WHERE IDyacimiento = ?
+
+>>Artefacto
+UPDATE artefactos
+SET nombre = ?,
+    descripcion = ?,
+    descubridores = (SELECT IDequipo FROM equipos WHERE nombre_equipo = ?),
+    encamino = ?,
+    museo = (SELECT IDmuseo FROM museos WHERE nombre_museo = ?),
+    yacimiento = (SELECT IDyacimiento FROM yacimientos WHERE nombre = ?),
+    clave = ?,
+    img = ?,
+    clase = (SELECT IDclase FROM clases WHERE nombre_clase = ?)
+WHERE IDartefacto = ?

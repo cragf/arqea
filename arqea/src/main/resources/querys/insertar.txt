@@ -1,0 +1,29 @@
+>>Lider
+INSERT INTO lideres (nombre, apellido)
+VALUES (?, ?)
+
+>>Equipo
+INSERT INTO equipos (nombre_equipo, lider)
+VALUES (?, (SELECT IDlider FROM lideres WHERE CONCAT(nombre, ' ', apellido) = ?))
+
+>>Clase
+INSERT INTO clases (nombre_clase, descripcion_clase)
+VALUES (?, ?)
+
+>>Museo
+INSERT INTO museos (nombre_museo)
+VALUES (?)
+
+>>Yacimiento
+INSERT INTO yacimientos (nombre, coordenadas)
+VALUES (?, ST_PointFromText(CONCAT('POINT(', ?, ' ', ?, ')')))
+
+>>Artefacto
+INSERT INTO artefactos (nombre, descripcion, descubridores, encamino, museo, yacimiento, clave, img, clase)
+VALUES (?, ?,
+        (SELECT IDequipo FROM equipos WHERE nombre_equipo = ?),
+        ?,
+        (SELECT IDmuseo FROM museos WHERE nombre_museo = ?),
+        (SELECT IDyacimiento FROM yacimientos WHERE nombre = ?),
+        ?, ?,
+        (SELECT IDclase FROM clases WHERE nombre_clase = ?))

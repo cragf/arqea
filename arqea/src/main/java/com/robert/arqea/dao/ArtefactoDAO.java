@@ -10,13 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ArtefactoDAO implements DAOinterfaz {
-
     @Override
     public ArrayList<Artefacto> listar() {
         ArrayList<Artefacto> lista = new ArrayList<>();
-        // debe hacer JOIN con equipos, museos, yacimientos y clases
-        // para traer los nombres en vez de los ids
-        String sql = "";
+
+        String sql = q.Leer("listar", "artefactos");
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);

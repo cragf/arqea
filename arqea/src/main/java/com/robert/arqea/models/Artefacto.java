@@ -12,7 +12,7 @@ public class Artefacto {
     private String clave;         // codigo unico, ej. 2 letras + 10 numeros
     private String img;           // nullable en BD
     private String clase;         // FK -> nombre de la clase
- 
+    
     public Artefacto() {
     }
  

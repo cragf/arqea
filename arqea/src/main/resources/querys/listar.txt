@@ -1,0 +1,35 @@
+>>Lider
+SELECT IDlider, nombre, apellido
+FROM lideres WHERE habilitado = true
+
+>>Equipo
+SELECT e.IDequipo, e.nombre_equipo, CONCAT(l.nombre, ' ', l.apellido) AS lider
+FROM equipos e
+INNER JOIN lideres l ON e.lider = l.IDlider
+WHERE e.habilitado = true
+
+>>Clase
+SELECT IDclase, nombre_clase, descripcion_clase
+FROM clases
+WHERE habilitado = true
+
+>>Museo
+SELECT IDmuseo, nombre_museo
+FROM museos
+WHERE habilitado = true
+
+>>Yacimiento
+SELECT IDyacimiento, nombre, ST_Y(coordenadas) AS latitud, ST_X(coordenadas) AS longitud
+FROM yacimientos
+WHERE habilitado = true
+
+>>Artefacto
+SELECT a.IDartefacto, a.nombre, a.descripcion, eq.nombre_equipo AS descubridores,
+       a.encamino, m.nombre_museo AS museo, y.nombre AS yacimiento,
+       a.clave, a.img, c.nombre_clase AS clase
+FROM artefactos a
+INNER JOIN equipos eq ON a.descubridores = eq.IDequipo
+LEFT JOIN museos m ON a.museo = m.IDmuseo
+INNER JOIN yacimientos y ON a.yacimiento = y.IDyacimiento
+INNER JOIN clases c ON a.clase = c.IDclase
+WHERE a.habilitado = true
