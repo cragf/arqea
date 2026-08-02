@@ -21,8 +21,8 @@
 </div>
  
 <!-- Artefactos -->
-<div id="tabla-artefactos" class="tabla-seccion activo">
     <a th:href="@{/artefactos/nuevo}">+ Nuevo artefacto</a>
+<div id="tabla-artefactos" class="tabla-seccion activo">
     <table>
         <thead>
         <tr>
@@ -35,7 +35,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="art : ${artefactos}"  th:attr="onclick=|mostrarImagen('${art.img}')|">
+        <tr th:each="art : ${artefactos}"  th:attr="onclick=|mostrarImagen('${art.img}'); Toggle(this)|">
             <td th:text="${art.nombre}"></td>
             <td th:text="${art.descripcion}"></td>
             <td th:text="${art.descubridores}"></td>
@@ -79,9 +79,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="eq : ${equipos}">
-            <td th:text="${eq.nombreEquipo}"></td>
-            <td th:text="${eq.lider}"></td>
+        <tr th:each="equi : ${equipos}">
+            <td th:text="${equi.nombreEquipo}"></td>
+            <td th:text="${equi.lider}"></td>
         </tr>
         </tbody>
     </table>
