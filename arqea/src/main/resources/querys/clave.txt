@@ -1,0 +1,8 @@
+>>museo
+SELECT clave FROM museos WHERE IDmuseo = ?
+
+>>equipo
+SELECT clave FROM equipos WHERE IDequipo = ?
+
+>>artefacto
+SELECT clave FROM artefactos WHERE IDartefacto = ?
