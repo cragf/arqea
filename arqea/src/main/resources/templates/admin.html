@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head> 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" th:href="@{/style/style.css}">
-        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-        <title>Arqea</title>
-    </head>
-<body>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel administrativo</title>
+</head>
+<body th:style="'background-color: ' + ${colorFondo} + '; min-height: 100vh; margin:0; padding:2rem;'">
+
+<h1 th:text="${tipo == 'museo' ? 'Panel del museo' : 'Panel del equipo'}"></h1>
+
+<form th:action="@{/salir}" method="post">
+    <button type="submit">Salir</button>
+</form>
+
+
  
 <h1>ArqeaDB</h1>
  
@@ -147,5 +152,6 @@
 
 <script th:src="@{/script/script.js}"></script>
  
+
 </body>
 </html>
