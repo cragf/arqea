@@ -15,7 +15,9 @@ public class YacimientoDAO implements DAOinterfaz {
     @Override
     public ArrayList<Yacimiento> listar() {
         ArrayList<Yacimiento> lista = new ArrayList<>();
-        String sql = "";
+        
+        String sql = q.Leer("yacimiento", "listar");
+        System.out.println("SQL listar yacimientos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);

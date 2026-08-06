@@ -31,7 +31,6 @@
             <th>Descubridores</th>
             <th>Yacimiento</th>
             <th>Museo</th>
-            <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
@@ -41,11 +40,6 @@
             <td th:text="${art.descubridores}"></td>
             <td th:text="${art.yacimiento}"></td>
             <td th:text="${art.museo}"></td>
-            <td>
-                <a th:href="@{/artefactos/editar/{id}(id=${art.idArtefacto})}">Editar</a>
-                |
-                <a th:href="@{/artefactos/eliminar/{id}(id=${art.idArtefacto})}">Eliminar</a>
-            </td>
         </tr>
         </tbody>
     </table>

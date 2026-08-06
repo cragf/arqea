@@ -14,7 +14,9 @@ public class LiderDAO implements DAOinterfaz {
     @Override
     public ArrayList<Lider> listar() {
         ArrayList<Lider> lista = new ArrayList<>();
-        String sql = "";
+        
+        String sql = q.Leer("lider", "listar");
+        System.out.println("SQL listar lideres: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);

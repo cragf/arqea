@@ -14,7 +14,9 @@ public class EquipoDAO implements DAOinterfaz {
     @Override
     public ArrayList<Equipo> listar() {
         ArrayList<Equipo> lista = new ArrayList<>();
-        String sql = ""; // debe hacer JOIN con lideres para traer el nombre del lider
+        
+        String sql = q.Leer("equipo", "listar");
+        System.out.println("SQL listar equipos: " + sql);
  
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);

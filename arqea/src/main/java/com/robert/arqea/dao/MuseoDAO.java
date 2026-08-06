@@ -14,7 +14,9 @@ public class MuseoDAO implements DAOinterfaz {
     @Override
     public ArrayList<Museo> listar() {
         ArrayList<Museo> lista = new ArrayList<>();
-        String sql = "";
+        
+        String sql = q.Leer("museo", "listar");
+        System.out.println("SQL listar museos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);

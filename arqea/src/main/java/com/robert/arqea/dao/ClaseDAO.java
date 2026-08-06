@@ -14,7 +14,9 @@ public class ClaseDAO implements DAOinterfaz {
     @Override
     public ArrayList<Clase> listar() {
         ArrayList<Clase> lista = new ArrayList<>();
-        String sql = "";
+        
+        String sql = q.Leer("clase", "listar");
+        System.out.println("SQL listar clases: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql);
