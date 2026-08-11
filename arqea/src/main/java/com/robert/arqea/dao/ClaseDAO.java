@@ -41,7 +41,8 @@ public class ClaseDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Clase clase = (Clase) obj;
-        String sql = "";
+        String sql = q.Leer("clase", "insertar");
+        System.out.println("SQL insertar clases: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -58,7 +59,8 @@ public class ClaseDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Clase clase = (Clase) obj;
-        String sql = "";
+        String sql = q.Leer("clase", "actualizar");
+        System.out.println("SQL actualizar clases: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -75,7 +77,8 @@ public class ClaseDAO implements DAOinterfaz {
 
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("clase", "eliminar");
+        System.out.println("SQL eliminar clases: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {

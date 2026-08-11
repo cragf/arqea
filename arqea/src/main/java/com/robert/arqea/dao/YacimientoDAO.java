@@ -43,7 +43,8 @@ public class YacimientoDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Yacimiento yacimiento = (Yacimiento) obj;
-        String sql = "";
+        String sql = q.Leer("yacimiento", "insertar");
+        System.out.println("SQL insertar yacimientos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -68,7 +69,8 @@ public class YacimientoDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Yacimiento yacimiento = (Yacimiento) obj;
-        String sql = "";
+        String sql = q.Leer("yacimiento", "actualizar");
+        System.out.println("SQL actualizar yacimientos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -93,7 +95,8 @@ public class YacimientoDAO implements DAOinterfaz {
 
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("yacimiento", "eliminar");
+        System.out.println("SQL eliminar yacimientos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {

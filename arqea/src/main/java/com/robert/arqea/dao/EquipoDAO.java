@@ -41,7 +41,8 @@ public class EquipoDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Equipo equipo = (Equipo) obj;
-        String sql = ""; // debe resolver el id del lider a partir de equipo.getLider()
+        String sql = q.Leer("equipo", "insertar");
+        System.out.println("SQL insertar equipos: " + sql);
  
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -58,8 +59,9 @@ public class EquipoDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Equipo equipo = (Equipo) obj;
-        String sql = ""; // debe resolver el id del lider a partir de equipo.getLider()
- 
+        String sql = q.Leer("equipo", "actualizar");
+        System.out.println("SQL actualizar equipos: " + sql);
+
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
  
@@ -75,7 +77,8 @@ public class EquipoDAO implements DAOinterfaz {
  
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("equipo", "eliminar");
+        System.out.println("SQL eliminar equipos: " + sql);
  
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {

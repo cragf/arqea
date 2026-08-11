@@ -8,7 +8,7 @@
         <title>Arqea</title>
     </head>
 <body>
- 
+    
 <h1>ArqeaDB</h1>
  
 <div class="toggle-grupo">
@@ -21,7 +21,6 @@
 </div>
  
 <!-- Artefactos -->
-    <a th:href="@{/artefactos/nuevo}">+ Nuevo artefacto</a>
 <div id="tabla-artefactos" class="tabla-seccion activo">
     <table>
         <thead>
@@ -138,7 +137,19 @@
 <div id="imagen">
     <img id="imagen-preview" src="/img/sin-imagen.png" alt="Vista previa" width="300" height="300"/>
 </div>
+<button id="btn-entrar" onclick="document.getElementById('modal-clave').style.display='flex'">Entrar</button>
 
+<div id="modal-clave" class="modal-overlay">
+    <div class="modal-caja">
+        <h3>Ingresar</h3>
+        <form th:action="@{/ingresar}" method="post">
+            <input type="text" name="clave" placeholder="Clave" maxlength="12" required/>
+            <button type="submit">Entrar</button>
+            <button type="button" onclick="document.getElementById('modal-clave').style.display='none'">Cancelar</button>
+        </form>
+        <p th:if="${error}" th:text="${error}" style="color:red;"></p>
+    </div>
+</div>
 <script th:src="@{/script/script.js}"></script>
  
 </body>

@@ -9,21 +9,21 @@ import com.robert.arqea.util.ConnectionDB;
 
 public class ClaveDAO {
     private Querys q = new Querys();
-    public String buscarClaveMuseo(int id) {
+    public Integer buscarClaveMuseo(String clave) {
 
-        String sql = q.Leer("museo", "clave");
-        System.out.println("SQL buscar clave museo: " + sql);
+        String sql = q.Leer("museo", "ingresar");
+        System.out.println("SQL ingresar museo: " + sql);
 
-        String clave = null;
+        Integer id = null;
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
             PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setString(1, clave);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    clave = rs.getString("clave");
+                    id = rs.getInt("IDmuseo");
                 }
             }
 
@@ -31,23 +31,23 @@ public class ClaveDAO {
             e.printStackTrace();
         }
 
-        return clave;
+        return id;
     }
-    public String buscarClaveEquipo(int id) {
+    public Integer buscarClaveEquipo(String clave) {
 
-        String sql = q.Leer("equipo", "clave");
-        System.out.println("SQL buscar clave equipo: " + sql);
+        String sql = q.Leer("equipo", "ingresar");
+        System.out.println("SQL ingresar equipo: " + sql);
 
-        String clave = null;
+        Integer id = null;
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
             PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setString(1, clave);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    clave = rs.getString("clave");
+                    id = rs.getInt("IDequipo");
                 }
             }
 
@@ -55,23 +55,23 @@ public class ClaveDAO {
             e.printStackTrace();
         }
 
-        return clave;
+        return id;
     }
-    public String buscarClaveArtefacto(int id) {
+    public Integer buscarClaveArtefacto(String clave) {
 
-        String sql = q.Leer("artefacto", "clave");
-        System.out.println("SQL buscar clave artefacto: " + sql);
+        String sql = q.Leer("artefacto", "ingresar");
+        System.out.println("SQL ingresar artefacto: " + sql);
 
-        String clave = null;
+        Integer id = null;
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
             PreparedStatement ps = con.prepareStatement(sql)) {
 
-            ps.setInt(1, id);
+            ps.setString(1, clave);
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    clave = rs.getString("clave");
+                    id = rs.getInt("IDartefacto");
                 }
             }
 
@@ -79,6 +79,6 @@ public class ClaveDAO {
             e.printStackTrace();
         }
 
-        return clave;
+        return id;
     }
 }

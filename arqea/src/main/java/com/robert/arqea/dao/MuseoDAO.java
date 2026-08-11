@@ -40,7 +40,8 @@ public class MuseoDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Museo museo = (Museo) obj;
-        String sql = "";
+        String sql = q.Leer("museo", "insertar");
+        System.out.println("SQL insertar museos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -56,7 +57,8 @@ public class MuseoDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Museo museo = (Museo) obj;
-        String sql = "";
+        String sql = q.Leer("museo", "actualizar");
+        System.out.println("SQL actualizar museos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -72,7 +74,8 @@ public class MuseoDAO implements DAOinterfaz {
 
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("museo", "eliminar");
+        System.out.println("SQL eliminar museos: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {

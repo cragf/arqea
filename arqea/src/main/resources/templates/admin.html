@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Panel administrativo</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Panel administrativo</title>
+        <link rel="stylesheet" th:href="@{/style/style.css}">
+    </head>
 <body th:style="'background-color: ' + ${colorFondo} + '; min-height: 100vh; margin:0; padding:2rem;'">
 
 <h1 th:text="${tipo == 'museo' ? 'Panel del museo' : 'Panel del equipo'}"></h1>

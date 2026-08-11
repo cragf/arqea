@@ -41,7 +41,8 @@ public class LiderDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Lider lider = (Lider) obj;
-        String sql = "";
+        String sql = q.Leer("lider", "insertar");
+        System.out.println("SQL insertar lideres: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -58,7 +59,8 @@ public class LiderDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Lider lider = (Lider) obj;
-        String sql = "";
+        String sql = q.Leer("lider", "actualizar");
+        System.out.println("SQL actualizar lideres: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -75,7 +77,8 @@ public class LiderDAO implements DAOinterfaz {
 
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("lider", "eliminar");
+        System.out.println("SQL eliminar lideres: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {

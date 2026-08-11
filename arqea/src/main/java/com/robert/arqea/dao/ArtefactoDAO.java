@@ -47,9 +47,10 @@ public class ArtefactoDAO implements DAOinterfaz {
     @Override
     public void insertar(Object obj) {
         Artefacto artefacto = (Artefacto) obj;
-        // debe resolver los ids de equipo/museo/yacimiento/clase
+        // debe resolve los ids de equipo/museo/yacimiento/clase
         // a partir de los nombres que trae el objeto
-        String sql = "";
+        String sql = q.Leer("artefacto", "insertar");
+        System.out.println("SQL insertar artefacto: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -73,7 +74,8 @@ public class ArtefactoDAO implements DAOinterfaz {
     @Override
     public void actualizar(Object obj) {
         Artefacto artefacto = (Artefacto) obj;
-        String sql = "";
+        String sql = q.Leer("artefacto", "actualizar");
+        System.out.println("SQL actualizar artefacto: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -97,7 +99,8 @@ public class ArtefactoDAO implements DAOinterfaz {
 
     @Override
     public void eliminar(int id) {
-        String sql = "";
+        String sql = q.Leer("artefacto", "eliminar");
+        System.out.println("SQL eliminar artefacto: " + sql);
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -117,9 +120,11 @@ public class ArtefactoDAO implements DAOinterfaz {
         String sql;
 
         if (museo) {
-            sql = ""; // ej: UPDATE artefactos SET museo = ? WHERE IDartefacto = ?
+            sql = q.Leer("artefactomuseo", "mover");
+            System.out.println("SQL listar artefactos: " + sql); // ej: UPDATE artefactos SET museo = ? WHERE IDartefacto = ?
         } else {
-            sql = ""; // ej: UPDATE artefactos SET yacimiento = ? WHERE IDartefacto = ?
+            sql = q.Leer("artefactoyacimiento", "mover");
+            System.out.println("SQL listar artefactos: " + sql); // ej: UPDATE artefactos SET yacimiento = ? WHERE IDartefacto = ?
         }
 
         try (Connection con = ConnectionDB.Getconexion().Conectar();
