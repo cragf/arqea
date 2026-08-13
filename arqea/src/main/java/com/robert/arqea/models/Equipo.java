@@ -5,21 +5,38 @@ public class Equipo {
     private Integer idEquipo;
     private String nombreEquipo;
     private String lider; // FK -> Lider.idLider
+    private String clave;
+    public String getClave() {
+        return clave;
+    }
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    private boolean habilitado;
 
     
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Equipo(Integer idEquipo, String nombreEquipo, String lider) {
+    public Equipo(Integer idEquipo, String nombreEquipo, String lider, String clave) {
         this.idEquipo = idEquipo;
         this.nombreEquipo = nombreEquipo;
         this.lider = lider;
+        this.clave = clave;
+        this.habilitado = true;
     }
     public Equipo() {
     }
 
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Equipo(String nombreEquipo, String lider) {
-        this(null, nombreEquipo, lider);
+    public Equipo(String nombreEquipo, String lider, String clave) {
+        this(null, nombreEquipo, lider, clave);
     }
 
     public Integer getIdEquipo() {

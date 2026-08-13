@@ -7,13 +7,26 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.robert.arqea.dao.ArtefactoDAO;
+//import com.robert.arqea.dao.ClaseDAO;
 import com.robert.arqea.dao.ClaveDAO;
+import com.robert.arqea.dao.EquipoDAO;
+//import com.robert.arqea.dao.LiderDAO;
+import com.robert.arqea.dao.MuseoDAO;
+//import com.robert.arqea.dao.YacimientoDAO;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class AdminController {
 
     private final ClaveDAO claveDAO = new ClaveDAO();
+    private final ArtefactoDAO artefactoDAO = new ArtefactoDAO();
+    //private final ClaseDAO claseDAO = new ClaseDAO();
+    private final EquipoDAO equipoDAO = new EquipoDAO();
+    //private final LiderDAO liderDAO = new LiderDAO();
+    private final MuseoDAO museoDAO = new MuseoDAO();
+    //private final YacimientoDAO yacimientoDAO = new YacimientoDAO();
 
     @PostMapping("/ingresar")
     public String ingresar(@RequestParam String clave, HttpSession session, RedirectAttributes redirectAttributes) {
@@ -50,5 +63,38 @@ public class AdminController {
     public String salir(HttpSession session) {
         session.invalidate();
         return "redirect:/principal";
+    }
+
+    @PostMapping("/verificar-clave")
+    public String verificarClave(@RequestParam String tipo, @RequestParam int id,
+                                @RequestParam String accion, @RequestParam String clave,
+                                RedirectAttributes redirectAttributes) {
+
+        Integer idValidado = switch (tipo) {
+            case "museo" -> claveDAO.buscarClaveMuseo(clave);
+            case "equipo" -> claveDAO.buscarClaveEquipo(clave);
+            case "artefacto" -> claveDAO.buscarClaveArtefacto(clave);
+            default -> null;
+        };
+
+        if (idValidado == null || idValidado != id) {
+            redirectAttributes.addFlashAttribute("errorClave", "Código incorrecto");
+            redirectAttributes.addFlashAttribute("tipoReintento", tipo);
+            redirectAttributes.addFlashAttribute("idReintento", id);
+            redirectAttributes.addFlashAttribute("accionReintento", accion);
+            return "redirect:/admin";
+        }
+
+        if ("eliminar".equals(accion)) {
+            switch (tipo) {
+                case "museo" -> museoDAO.eliminar(id);
+                case "equipo" -> equipoDAO.eliminar(id);
+                case "artefacto" -> artefactoDAO.eliminar(id);
+            }
+            return "redirect:/admin";
+        }
+
+        // accion == "editar"
+        return "redirect:/" + tipo + "s/editar/" + id;
     }
 }

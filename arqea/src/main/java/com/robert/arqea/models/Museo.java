@@ -4,19 +4,39 @@ public class Museo {
 
     private Integer idMuseo;
     private String nombreMuseo;
+    private String clave;
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    private boolean habilitado;
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 
     public Museo() {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Museo(Integer idMuseo, String nombreMuseo) {
+    public Museo(Integer idMuseo, String nombreMuseo, String clave) {
         this.idMuseo = idMuseo;
         this.nombreMuseo = nombreMuseo;
+        this.clave = clave;
+        this.habilitado = true;
     }
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Museo(String nombreMuseo) {
-        this(null, nombreMuseo);
+    public Museo(String nombreMuseo, String clave) {
+        this(null, nombreMuseo, clave);
     }
 
     public Integer getIdMuseo() {

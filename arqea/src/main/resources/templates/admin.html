@@ -48,9 +48,8 @@
             <td th:text="${art.yacimiento}"></td>
             <td th:text="${art.museo}"></td>
             <td>
-                <a th:href="@{/artefactos/editar/{id}(id=${art.idArtefacto})}">Editar</a>
-                |
-                <a th:href="@{/artefactos/eliminar/{id}(id=${art.idArtefacto})}">Eliminar</a>
+                <button th:attr="onclick=|pedirClave('artefacto', ${art.idArtefacto}, 'editar')|">Editar</button>
+                <button th:attr="onclick=|pedirClave('artefacto', ${art.idArtefacto}, 'eliminar')|">Eliminar</button>
             </td>
         </tr>
         </tbody>
@@ -147,12 +146,32 @@
     </table>
 </div>
  
+<div id="modal-clave-accion" class="modal-overlay">
+    <div class="modal-caja">
+        <h3>Ingresa el código para continuar</h3>
+        <form th:action="@{/verificar-clave}" method="post">
+            <input type="hidden" name="tipo" id="clave-tipo"/>
+            <input type="hidden" name="id" id="clave-id"/>
+            <input type="hidden" name="accion" id="clave-accion"/>
+
+            <input type="text" name="clave" placeholder="Código" maxlength="12" required/>
+            <button type="submit">Confirmar</button>
+            <button type="button" onclick="cerrarModalClave()">Cancelar</button>
+        </form>
+        <p th:if="${errorClave}" th:text="${errorClave}" style="color:red;"></p>
+    </div>
+</div>
+
 <div id="imagen">
     <img id="imagen-preview" src="/img/sin-imagen.png" alt="Vista previa" width="300" height="300"/>
 </div>
 
 <script th:src="@{/script/script.js}"></script>
- 
+<script th:if="${errorClave}" th:inline="javascript">
+    window.addEventListener('DOMContentLoaded', function() {
+        pedirClave('[[${tipoReintento}]]', '[[${idReintento}]]', '[[${accionReintento}]]');
+    });
+</script>
 
 </body>
 </html>

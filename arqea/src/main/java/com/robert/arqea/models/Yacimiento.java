@@ -6,6 +6,15 @@ public class Yacimiento {
     private String nombre;
     private Double latitud;  // nullable en BD (coordenadas POINT admite NULL)
     private Double longitud; // nullable en BD (coordenadas POINT admite NULL)
+    private boolean habilitado;
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 
     public Yacimiento() {
     }
@@ -16,6 +25,7 @@ public class Yacimiento {
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
+        this.habilitado = true;
     }
 
     // Constructor para registro nuevo con coordenadas conocidas (id -> null preventivo)

@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 2rem;
+    --color-fila: #eed;
 }
 
 body::before {
@@ -55,10 +56,26 @@ th, td {
     border: 1px solid #ccc;
     padding: 0.5rem;
     text-align: left;
+    position: relative;
 }
 
-th {
-    background: #eee;
+td::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: var(--color-fila, transparent);
+    opacity: 0.5;
+    z-index: -1;
+}
+
+th::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #eee;
+    opacity: 0.9;
+    backdrop-filter: blur(4px);
+    z-index: -1;
 }
 
 thead tr {
@@ -70,15 +87,15 @@ thead tr {
 
 #imagen {
     position: absolute;
-    top: 20px;
+    top: 100px;
     right: 10px;
     height: 500px;
     width: 35%;
     overflow: hidden;
     background-image: url('/img/background.webp');
     background-size:cover ;
-    border-style: groove;
-    border-color: #444;
+    border-style: inset;
+    border-color: #aaa;
     border-width: 4px;
     border-radius: 5px;
 }
@@ -90,10 +107,9 @@ thead tr {
     width: auto;   
     object-fit: contain;
     display: block;
-    border-style: groove;
-    border-color: #444;
+    border-style:inset;
+    border-color: #aaa;
     border-width: 4px;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -112,6 +128,7 @@ thead tr {
     background: rgba(0,0,0,0.5);
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 .modal-caja {
     background: #fff;

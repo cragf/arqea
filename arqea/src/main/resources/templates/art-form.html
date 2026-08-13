@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Artefacto</title>
+</head>
+<body>
+
+<h1>Artefacto</h1>
+
+<form th:action="@{/artefactos/guardar}" th:object="${artefacto}" method="post">
+
+    <input type="hidden" th:field="*{idArtefacto}"/>
+    <input type="hidden" th:field="*{habilitado}"/>
+    
+    <label>Nombre</label>
+    <input type="text" th:field="*{nombre}"/><br/>
+
+    <label>Descripcion</label>
+    <textarea th:field="*{descripcion}"></textarea><br/>
+
+    <label>Equipo descubridor (nombre exacto)</label>
+    <input type="text" th:field="*{descubridores}"/><br/>
+
+    <label>En camino</label>
+    <input type="checkbox" th:field="*{encamino}"/><br/>
+
+    <label>Museo (nombre exacto, opcional)</label>
+    <input type="text" th:field="*{museo}"/><br/>
+
+    <label>Yacimiento (nombre exacto)</label>
+    <input type="text" th:field="*{yacimiento}"/><br/>
+
+    <div th:if="${artefacto.idArtefacto == null}">
+        <label>Clave</label>
+        <input type="text" name="clave" maxlength="12"/>
+    </div>
+
+    <label>Imagen (nombre de archivo, opcional)</label>
+    <input type="text" th:field="*{img}"/><br/>
+
+    <label>Clase (nombre exacto)</label>
+    <input type="text" th:field="*{clase}"/><br/>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/}">Cancelar</a>
+</form>
+
+</body>
+</html>

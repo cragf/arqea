@@ -5,8 +5,18 @@ public class Lider {
     private Integer idLider;
     private String nombre;
     private String apellido;
+    private boolean habilitado;
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 
     public Lider() {
+        this.habilitado = true;
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
@@ -14,6 +24,7 @@ public class Lider {
         this.idLider = idLider;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.habilitado = true;
     }
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)

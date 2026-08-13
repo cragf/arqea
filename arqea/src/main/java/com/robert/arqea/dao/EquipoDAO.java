@@ -26,7 +26,8 @@ public class EquipoDAO implements DAOinterfaz {
                 Equipo equipo = new Equipo(
                         rs.getInt("IDequipo"),
                         rs.getString("nombre_equipo"),
-                        rs.getString("lider") // nombre del lider, no el id
+                        rs.getString("lider"), // nombre del lider, no el id
+                        rs.getString("clave")
                 );
                 lista.add(equipo);
             }

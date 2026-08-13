@@ -5,8 +5,18 @@ public class Clase {
     private Integer idClase;
     private String nombreClase;
     private String descripcionClase;
+    private boolean habilitado;
+
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 
     public Clase() {
+        this.habilitado = true;
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
@@ -14,6 +24,7 @@ public class Clase {
         this.idClase = idClase;
         this.nombreClase = nombreClase;
         this.descripcionClase = descripcionClase;
+        this.habilitado = true;
     }
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)

@@ -25,15 +25,25 @@ function mostrarTabla(boton) {
 function Toggle(fila) {
 
     if (filaActual !== null) {
-        const index = Array.from(fila.parentNode.children).indexOf(filaActual);
-
-        if (index % 2 === 0) {
-            filaActual.style.backgroundColor = '#f5f5dc';
-        } else {
-            filaActual.style.backgroundColor = 'antiquewhite';
-        }
+        filaActual.style.setProperty('--color-fila', '#eed');
     }
 
-    fila.style.backgroundColor = '#ff9f70';
+    fila.style.setProperty('--color-fila', '#ff9f70');
+
+    if (filaActual === fila) {
+        fila.style.setProperty('--color-fila', '#eed');
+        filaActual = null;
+        return;
+    }
     filaActual = fila;
+}
+function pedirClave(tipo, id, accion) {
+    document.getElementById('clave-tipo').value = tipo;
+    document.getElementById('clave-id').value = id;
+    document.getElementById('clave-accion').value = accion;
+    document.getElementById('modal-clave-accion').style.display = 'flex';
+}
+
+function cerrarModalClave() {
+    document.getElementById('modal-clave-accion').style.display = 'none';
 }

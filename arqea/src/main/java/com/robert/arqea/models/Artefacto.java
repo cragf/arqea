@@ -12,8 +12,18 @@ public class Artefacto {
     private String clave;         // codigo unico, ej. 2 letras + 10 numeros
     private String img;           // nullable en BD
     private String clase;         // FK -> nombre de la clase
+    private boolean habilitado;
     
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+
     public Artefacto() {
+        this.habilitado = true;
     }
  
     // Constructor completo (incluye id, para registros ya existentes en BD)
@@ -30,6 +40,7 @@ public class Artefacto {
         this.clave = clave;
         this.img = img;
         this.clase = clase;
+        this.habilitado = true;
     }
  
     // Constructor para registro nuevo, con museo e img conocidos (id -> null preventivo)
