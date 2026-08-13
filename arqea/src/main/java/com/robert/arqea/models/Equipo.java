@@ -6,6 +6,7 @@ public class Equipo {
     private String nombreEquipo;
     private String lider; // FK -> Lider.idLider
     private String clave;
+    private boolean habilitado;
     public String getClave() {
         return clave;
     }
@@ -13,7 +14,6 @@ public class Equipo {
         this.clave = clave;
     }
 
-    private boolean habilitado;
 
     
     public boolean isHabilitado() {

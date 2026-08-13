@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipo</title>
+        <link rel="stylesheet" th:href="@{/style/style.css}">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+
+<h1>Equipo</h1>
+
+<form th:action="@{/equipos/guardar}" th:object="${equipo}" method="post">
+
+    <input type="hidden" th:field="*{idEquipo}"/>
+    <input type="hidden" th:field="*{habilitado}"/>
+    
+    <label>Nombre</label>
+    <input type="text" th:field="*{nombreEquipo}"/><br/>
+
+    <label>Lider (nombre exacto, opcional)</label>
+    <input type="text" th:field="*{lider}"/><br/>
+
+    <div th:if="${equipo.idEquipo == null}">
+    </div>
+
+    <button type="submit">Guardar</button>
+    <a th:href="@{/}">Cancelar</a>
+</form>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ public class Museo {
     private Integer idMuseo;
     private String nombreMuseo;
     private String clave;
+    private boolean habilitado;
     public String getClave() {
         return clave;
     }
@@ -13,7 +14,6 @@ public class Museo {
         this.clave = clave;
     }
 
-    private boolean habilitado;
 
     public boolean isHabilitado() {
         return habilitado;

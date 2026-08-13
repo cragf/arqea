@@ -49,14 +49,14 @@ public class MainController {
     }
 
     @PostMapping("/artefactos/guardar")
-    public String guardarArtefacto(@ModelAttribute Artefacto artefacto, @RequestParam(required = false) String clave) {
+    public String guardarArtefacto(@ModelAttribute Artefacto artefacto) {
         if (artefacto.getIdArtefacto() == null) {
             artefacto.setHabilitado(true);
-            artefacto.setClave(clave); // clave nueva, la que sí se pidió en el form de creacion
+            artefacto.setClave(generarClave());
             artefactoDAO.insertar(artefacto);
         } else {
             Artefacto original = buscarArtefactoPorId(artefacto.getIdArtefacto());
-            artefacto.setClave(original.getClave()); // preserva la clave real, nunca viajo por el form
+            artefacto.setClave(original.getClave());
             artefactoDAO.actualizar(artefacto);
         }
         return "redirect:/principal";
@@ -94,7 +94,7 @@ public class MainController {
     public String guardarEquipo(@ModelAttribute Equipo equipo, @RequestParam(required = false) String clave) {
         if (equipo.getIdEquipo() == null) {
             equipo.setHabilitado(true);
-            equipo.setClave(clave); // clave nueva, la que sí se pidió en el form de creacion
+            equipo.setClave(generarClave());
             equipoDAO.insertar(equipo);
         } else {
             Equipo original = buscarEquipoPorId(equipo.getIdEquipo());
@@ -135,7 +135,7 @@ public class MainController {
     public String guardarMuseo(@ModelAttribute Museo museo, @RequestParam(required = false) String clave) {
         if (museo.getIdMuseo() == null) {
             museo.setHabilitado(true);
-            museo.setClave(clave); // clave nueva, la que sí se pidió en el form de creacion
+            museo.setClave(generarClave()); // clave nueva, la que sí se pidió en el form de creacion
             museoDAO.insertar(museo);
         } else {
             Museo original = buscarMuseoPorId(museo.getIdMuseo());
@@ -159,5 +159,17 @@ public class MainController {
             }
         }
         return new Museo();
+    }
+    private String generarClave() {
+        String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder sb = new StringBuilder();
+        java.util.Random rnd = new java.util.Random();
+
+        sb.append(letras.charAt(rnd.nextInt(26)));
+        sb.append(letras.charAt(rnd.nextInt(26)));
+        for (int i = 0; i < 10; i++) {
+            sb.append(rnd.nextInt(10));
+        }
+        return sb.toString();
     }
 }

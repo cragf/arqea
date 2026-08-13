@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Artefacto</title>
+        <link rel="stylesheet" th:href="@{/style/style.css}">
+        <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 <body>
 
@@ -32,8 +34,7 @@
     <input type="text" th:field="*{yacimiento}"/><br/>
 
     <div th:if="${artefacto.idArtefacto == null}">
-        <label>Clave</label>
-        <input type="text" name="clave" maxlength="12"/>
+    <!-- ya no hay input de clave aquí, se genera sola -->
     </div>
 
     <label>Imagen (nombre de archivo, opcional)</label>
