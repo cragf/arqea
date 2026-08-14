@@ -19,6 +19,8 @@ import com.robert.arqea.models.Artefacto;
 import com.robert.arqea.models.Equipo;
 import com.robert.arqea.models.Museo;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class MainController {
 
@@ -44,13 +46,15 @@ public class MainController {
     }
 
     @GetMapping("/artefactos/editar/{id}")
-    public String editarArtefacto(@PathVariable int id, Model model) {
+    public String editarArtefacto(@PathVariable int id, Model model, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         model.addAttribute("artefacto", buscarArtefactoPorId(id));
         return "artefacto-formulario";
     }
 
     @PostMapping("/artefactos/guardar")
-    public String guardarArtefacto(@ModelAttribute Artefacto artefacto, RedirectAttributes redirectAttributes) {
+    public String guardarArtefacto(@ModelAttribute Artefacto artefacto, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         if (artefacto.getIdArtefacto() == null) {
             artefacto.setHabilitado(true);
             String claveGenerada = generarClave();
@@ -62,13 +66,14 @@ public class MainController {
             artefacto.setClave(original.getClave());
             artefactoDAO.actualizar(artefacto);
         }
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     @GetMapping("/artefactos/eliminar/{id}")
-    public String eliminarArtefacto(@PathVariable int id) {
+    public String eliminarArtefacto(@PathVariable int id, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         artefactoDAO.eliminar(id);
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     private Artefacto buscarArtefactoPorId(int id) {
@@ -88,13 +93,15 @@ public class MainController {
     }
 
     @GetMapping("/equipos/editar/{id}")
-    public String editarEquipo(@PathVariable int id, Model model) {
+    public String editarEquipo(@PathVariable int id, Model model, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         model.addAttribute("equipo", buscarEquipoPorId(id));
         return "equipo-formulario";
     }
 
     @PostMapping("/equipos/guardar")
-    public String guardarEquipo(@ModelAttribute Equipo equipo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes) {
+    public String guardarEquipo(@ModelAttribute Equipo equipo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         if (equipo.getIdEquipo() == null) {
             equipo.setHabilitado(true);
             String claveGenerada = generarClave();
@@ -106,13 +113,14 @@ public class MainController {
             equipo.setClave(original.getClave()); // preserva la clave real, nunca viajo por el form
             equipoDAO.actualizar(equipo);
         }
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     @GetMapping("/equipos/eliminar/{id}")
-    public String eliminarEquipo(@PathVariable int id) {
+    public String eliminarEquipo(@PathVariable int id, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         equipoDAO.eliminar(id);
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     private Equipo buscarEquipoPorId(int id) {
@@ -131,13 +139,15 @@ public class MainController {
     }
 
     @GetMapping("/museos/editar/{id}")
-    public String editarMuseo(@PathVariable int id, Model model) {
+    public String editarMuseo(@PathVariable int id, Model model, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         model.addAttribute("museo", buscarMuseoPorId(id));
         return "museo-formulario";
     }
 
     @PostMapping("/museos/guardar")
-    public String guardarMuseo(@ModelAttribute Museo museo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes) {
+    public String guardarMuseo(@ModelAttribute Museo museo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         if (museo.getIdMuseo() == null) {
             museo.setHabilitado(true);
             String claveGenerada = generarClave();
@@ -149,13 +159,14 @@ public class MainController {
             museo.setClave(original.getClave()); // preserva la clave real, nunca viajo por el form
             museoDAO.actualizar(museo);
         }
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     @GetMapping("/museos/eliminar/{id}")
-    public String eliminarMuseo(@PathVariable int id) {
+    public String eliminarMuseo(@PathVariable int id, HttpSession session) {
+        if (session.getAttribute("tipo") == null) return "redirect:/";
         museoDAO.eliminar(id);
-        return "redirect:/principal";
+        return "redirect:/admin";
     }
 
     private Museo buscarMuseoPorId(int id) {

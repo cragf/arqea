@@ -21,17 +21,26 @@
     <label>Descripcion</label>
     <textarea th:field="*{descripcion}"></textarea><br/>
 
-    <label>Equipo descubridor (nombre exacto)</label>
-    <input type="text" th:field="*{descubridores}"/><br/>
+    <label>Equipo descubridor</label>
+    <input type="text" th:field="*{descubridores}" list="lista-equipos" autocomplete="off"/>
+    <datalist id="lista-equipos">
+        <option th:each="equi : ${equipos}" th:value="${equi.nombreEquipo}"></option>
+    </datalist>
 
     <label>En camino</label>
     <input type="checkbox" th:field="*{encamino}"/><br/>
 
-    <label>Museo (nombre exacto, opcional)</label>
-    <input type="text" th:field="*{museo}"/><br/>
+    <label>Museo (opcional)</label>
+    <input type="text" th:field="*{museo}" list="lista-museos" autocomplete="off"/>
+    <datalist id="lista-museos">
+        <option th:each="m : ${museos}" th:value="${m.nombreMuseo}"></option>
+    </datalist>
 
-    <label>Yacimiento (nombre exacto)</label>
-    <input type="text" th:field="*{yacimiento}"/><br/>
+    <label>Yacimiento</label>
+    <input type="text" th:field="*{yacimiento}" list="lista-yacimientos" autocomplete="off"/>
+    <datalist id="lista-yacimientos">
+        <option th:each="y : ${yacimientos}" th:value="${y.nombre}"></option>
+    </datalist>
 
     <div th:if="${artefacto.idArtefacto == null}">
     <!-- ya no hay input de clave aquí, se genera sola -->
@@ -40,8 +49,11 @@
     <label>Imagen (nombre de archivo, opcional)</label>
     <input type="text" th:field="*{img}"/><br/>
 
-    <label>Clase (nombre exacto)</label>
-    <input type="text" th:field="*{clase}"/><br/>
+    <label>Clase</label>
+    <input type="text" th:field="*{clase}" list="lista-clases" autocomplete="off"/>
+    <datalist id="lista-clases">
+        <option th:each="c : ${clases}" th:value="${c.nombreClase}"></option>
+    </datalist>
 
     <button type="submit">Guardar</button>
     <a th:href="@{/}">Cancelar</a>
