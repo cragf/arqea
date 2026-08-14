@@ -33,7 +33,6 @@ SET nombre = ?,
     encamino = ?,
     museo = (SELECT IDmuseo FROM museos WHERE nombre_museo = ?),
     yacimiento = (SELECT IDyacimiento FROM yacimientos WHERE nombre = ?),
-    clave = ?,
     img = ?,
     clase = (SELECT IDclase FROM clases WHERE nombre_clase = ?)
 WHERE IDartefacto = ?

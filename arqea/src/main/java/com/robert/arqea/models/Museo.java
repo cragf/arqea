@@ -6,6 +6,7 @@ public class Museo {
     private String nombreMuseo;
     private String clave;
     private boolean habilitado;
+
     public String getClave() {
         return clave;
     }
@@ -27,16 +28,16 @@ public class Museo {
     }
 
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Museo(Integer idMuseo, String nombreMuseo, String clave) {
+    public Museo(Integer idMuseo, String nombreMuseo) {
         this.idMuseo = idMuseo;
         this.nombreMuseo = nombreMuseo;
-        this.clave = clave;
+        this.clave = null;
         this.habilitado = true;
     }
 
-    // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Museo(String nombreMuseo, String clave) {
-        this(null, nombreMuseo, clave);
+    // Constructor para registro nuevo
+    public Museo(String nombreMuseo) {
+        this(null, nombreMuseo);
     }
 
     public Integer getIdMuseo() {

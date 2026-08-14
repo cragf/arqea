@@ -11,7 +11,7 @@
 <h1 th:text="${tipo == 'museo' ? 'Panel del museo' : 'Panel del equipo'}"></h1>
 
 <form th:action="@{/salir}" method="post">
-    <button type="submit">Salir</button>
+    <button id="btn-salir" type="submit">Salir</button>
 </form>
 
 
@@ -30,6 +30,16 @@
 <!-- Artefactos -->
     <a th:href="@{/artefactos/nuevo}">+ Nuevo artefacto</a>
 <div id="tabla-artefactos" class="tabla-seccion activo">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Descripción</option>
+            <option value="2">Descubridores</option>
+            <option value="3">Yacimiento</option>
+            <option value="4">Museo</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -59,6 +69,13 @@
  
 <!-- Lideres -->
 <div id="tabla-lideres" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Apellido</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -77,6 +94,13 @@
  
 <!-- Equipos -->
 <div id="tabla-equipos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre del equipo</option>
+            <option value="1">Lider</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -95,6 +119,13 @@
  
 <!-- Clases -->
 <div id="tabla-clases" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Descripción</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -113,6 +144,12 @@
  
 <!-- Museos -->
 <div id="tabla-museos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre del museo</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -129,6 +166,14 @@
  
 <!-- Yacimientos -->
 <div id="tabla-yacimientos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Latitud</option>
+            <option value="2">Longitud</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -164,7 +209,7 @@
 </div>
 
 <div id="imagen">
-    <img id="imagen-preview" src="/img/sin-imagen.png" alt="Vista previa" width="300" height="300"/>
+    <img id="imagen-preview" src="/img/00001.webp" alt="Vista previa" width="300" height="300"/>
 </div>
 
 <script th:src="@{/script/script.js}"></script>

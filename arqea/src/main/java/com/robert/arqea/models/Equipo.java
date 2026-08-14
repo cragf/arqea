@@ -23,11 +23,11 @@ public class Equipo {
         this.habilitado = habilitado;
     }
     // Constructor completo (incluye id, para registros ya existentes en BD)
-    public Equipo(Integer idEquipo, String nombreEquipo, String lider, String clave) {
+    public Equipo(Integer idEquipo, String nombreEquipo, String lider) {
         this.idEquipo = idEquipo;
         this.nombreEquipo = nombreEquipo;
         this.lider = lider;
-        this.clave = clave;
+        this.clave = null;
         this.habilitado = true;
     }
     public Equipo() {
@@ -35,8 +35,8 @@ public class Equipo {
 
 
     // Constructor para registro nuevo (id lo asigna la BD -> null preventivo)
-    public Equipo(String nombreEquipo, String lider, String clave) {
-        this(null, nombreEquipo, lider, clave);
+    public Equipo(String nombreEquipo, String lider) {
+        this(null, nombreEquipo, lider);
     }
 
     public Integer getIdEquipo() {

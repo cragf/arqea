@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.robert.arqea.dao.ArtefactoDAO;
 //import com.robert.arqea.dao.ClaveDAO;
@@ -49,11 +50,13 @@ public class MainController {
     }
 
     @PostMapping("/artefactos/guardar")
-    public String guardarArtefacto(@ModelAttribute Artefacto artefacto) {
+    public String guardarArtefacto(@ModelAttribute Artefacto artefacto, RedirectAttributes redirectAttributes) {
         if (artefacto.getIdArtefacto() == null) {
             artefacto.setHabilitado(true);
-            artefacto.setClave(generarClave());
+            String claveGenerada = generarClave();
+            artefacto.setClave(claveGenerada);
             artefactoDAO.insertar(artefacto);
+            redirectAttributes.addFlashAttribute("claveGenerada", claveGenerada);
         } else {
             Artefacto original = buscarArtefactoPorId(artefacto.getIdArtefacto());
             artefacto.setClave(original.getClave());
@@ -91,11 +94,13 @@ public class MainController {
     }
 
     @PostMapping("/equipos/guardar")
-    public String guardarEquipo(@ModelAttribute Equipo equipo, @RequestParam(required = false) String clave) {
+    public String guardarEquipo(@ModelAttribute Equipo equipo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes) {
         if (equipo.getIdEquipo() == null) {
             equipo.setHabilitado(true);
-            equipo.setClave(generarClave());
+            String claveGenerada = generarClave();
+            equipo.setClave(claveGenerada);
             equipoDAO.insertar(equipo);
+            redirectAttributes.addFlashAttribute("claveGenerada", claveGenerada);
         } else {
             Equipo original = buscarEquipoPorId(equipo.getIdEquipo());
             equipo.setClave(original.getClave()); // preserva la clave real, nunca viajo por el form
@@ -132,11 +137,13 @@ public class MainController {
     }
 
     @PostMapping("/museos/guardar")
-    public String guardarMuseo(@ModelAttribute Museo museo, @RequestParam(required = false) String clave) {
+    public String guardarMuseo(@ModelAttribute Museo museo, @RequestParam(required = false) String clave, RedirectAttributes redirectAttributes) {
         if (museo.getIdMuseo() == null) {
             museo.setHabilitado(true);
-            museo.setClave(generarClave()); // clave nueva, la que sí se pidió en el form de creacion
+            String claveGenerada = generarClave();
+            museo.setClave(claveGenerada);
             museoDAO.insertar(museo);
+            redirectAttributes.addFlashAttribute("claveGenerada", claveGenerada);
         } else {
             Museo original = buscarMuseoPorId(museo.getIdMuseo());
             museo.setClave(original.getClave()); // preserva la clave real, nunca viajo por el form

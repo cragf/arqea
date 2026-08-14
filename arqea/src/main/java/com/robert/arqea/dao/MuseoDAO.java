@@ -25,8 +25,7 @@ public class MuseoDAO implements DAOinterfaz {
             while (rs.next()) {
                 Museo museo = new Museo(
                         rs.getInt("IDmuseo"),
-                        rs.getString("nombre_museo"),
-                        rs.getString("clave")
+                        rs.getString("nombre_museo")
                 );
                 lista.add(museo);
             }

@@ -13,14 +13,6 @@ public class Artefacto {
     private String img;           // nullable en BD
     private String clase;         // FK -> nombre de la clase
     private boolean habilitado;
-    
-    public boolean isHabilitado() {
-        return habilitado;
-    }
-
-    public void setHabilitado(boolean habilitado) {
-        this.habilitado = habilitado;
-    }
 
     public Artefacto() {
         this.habilitado = true;
@@ -28,7 +20,7 @@ public class Artefacto {
  
     // Constructor completo (incluye id, para registros ya existentes en BD)
     public Artefacto(Integer idArtefacto, String nombre, String descripcion, String descubridores,
-                      Boolean encamino, String museo, String yacimiento, String clave,
+                      Boolean encamino, String museo, String yacimiento, 
                       String img, String clase) {
         this.idArtefacto = idArtefacto;
         this.nombre = nombre;
@@ -37,7 +29,7 @@ public class Artefacto {
         this.encamino = encamino;
         this.museo = museo;
         this.yacimiento = yacimiento;
-        this.clave = clave;
+        this.clave = null;
         this.img = img;
         this.clase = clase;
         this.habilitado = true;
@@ -45,15 +37,15 @@ public class Artefacto {
  
     // Constructor para registro nuevo, con museo e img conocidos (id -> null preventivo)
     public Artefacto(String nombre, String descripcion, String descubridores, Boolean encamino,
-                      String museo, String yacimiento, String clave, String img, String clase) {
-        this(null, nombre, descripcion, descubridores, encamino, museo, yacimiento, clave, img, clase);
+                      String museo, String yacimiento, String img, String clase) {
+        this(null, nombre, descripcion, descubridores, encamino, museo, yacimiento, img, clase);
     }
  
     // Constructor para registro nuevo sin museo asignado ni imagen todavia
     // (id, museo e img -> null preventivo, campos nullable segun la BD)
     public Artefacto(String nombre, String descripcion, String descubridores, Boolean encamino,
-                      String yacimiento, String clave, String clase) {
-        this(null, nombre, descripcion, descubridores, encamino, null, yacimiento, clave, null, clase);
+                      String yacimiento, String clase) {
+        this(null, nombre, descripcion, descubridores, encamino, null, yacimiento, null, clase);
     }
  
     public Integer getIdArtefacto() {
@@ -135,6 +127,15 @@ public class Artefacto {
     public void setClase(String clase) {
         this.clase = clase;
     }
+    
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
+
  
     @Override
     public String toString() {

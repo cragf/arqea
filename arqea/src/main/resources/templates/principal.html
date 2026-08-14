@@ -19,9 +19,22 @@
     <button class="toggle-btn" data-target="tabla-museos" onclick="mostrarTabla(this)">Museos</button>
     <button class="toggle-btn" data-target="tabla-yacimientos" onclick="mostrarTabla(this)">Yacimientos</button>
 </div>
+<div id="mapa" style="height:500px; margin-top:2rem; border-radius:8px;">
+    
+</div>
  
 <!-- Artefactos -->
 <div id="tabla-artefactos" class="tabla-seccion activo">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Descripción</option>
+            <option value="2">Descubridores</option>
+            <option value="3">Yacimiento</option>
+            <option value="4">Museo</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -46,6 +59,13 @@
  
 <!-- Lideres -->
 <div id="tabla-lideres" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Apellido</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -64,6 +84,13 @@
  
 <!-- Equipos -->
 <div id="tabla-equipos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre del equipo</option>
+            <option value="1">Lider</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -82,6 +109,13 @@
  
 <!-- Clases -->
 <div id="tabla-clases" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Descripción</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -100,6 +134,12 @@
  
 <!-- Museos -->
 <div id="tabla-museos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre del museo</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -116,6 +156,14 @@
  
 <!-- Yacimientos -->
 <div id="tabla-yacimientos" class="tabla-seccion">
+    <div class="busqueda-barra">
+        <select class="busqueda-columna" onchange="filtrarTabla(this)">
+            <option value="0">Nombre</option>
+            <option value="1">Latitud</option>
+            <option value="2">Longitud</option>
+        </select>
+        <input type="text" class="busqueda-texto" placeholder="Buscar..." oninput="filtrarTabla(this)"/>
+    </div>
     <table>
         <thead>
         <tr>
@@ -135,7 +183,7 @@
 </div>
  
 <div id="imagen">
-    <img id="imagen-preview" src="/img/sin-imagen.png" alt="Vista previa" width="300" height="300"/>
+    <img id="imagen-preview" src="/img/00001.webp" alt="Vista previa" width="300" height="300"/>
 </div>
 <button id="btn-entrar" onclick="document.getElementById('modal-clave').style.display='flex'">Entrar</button>
 
@@ -150,6 +198,22 @@
         <p th:if="${error}" th:text="${error}" style="color:red;"></p>
     </div>
 </div>
+
+<!-- Pop up con la clave que va a aparecer en la db -->
+<div id="modal-clave-generada" class="modal-overlay">
+    <div class="modal-caja">
+        <h3>Registro creado</h3>
+        <p>Guarda este código, lo vas a necesitar para editar o eliminar este registro más adelante:</p>
+        <p th:text="${claveGenerada}" style="font-size:1.5rem; font-weight:bold; letter-spacing:0.1em;"></p>
+        <button type="button" onclick="document.getElementById('modal-clave-generada').style.display='none'">Entendido</button>
+    </div>
+</div>
+
+<script th:if="${claveGenerada}">
+    window.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('modal-clave-generada').style.display = 'flex';
+    });
+</script>
 <script th:src="@{/script/script.js}"></script>
  
 </body>

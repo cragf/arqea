@@ -30,7 +30,6 @@ public class ArtefactoDAO implements DAOinterfaz {
                         rs.getBoolean("encamino"),
                         rs.getString("museo"),         // nombre del museo (puede ser null)
                         rs.getString("yacimiento"),    // nombre del yacimiento
-                        rs.getString("clave"),
                         rs.getString("img"),
                         rs.getString("clase")          // nombre de la clase
                 );
@@ -86,10 +85,10 @@ public class ArtefactoDAO implements DAOinterfaz {
             ps.setBoolean(4, artefacto.getEncamino());
             ps.setString(5, artefacto.getMuseo());
             ps.setString(6, artefacto.getYacimiento());
-            ps.setString(7, artefacto.getClave());
-            ps.setString(8, artefacto.getImg());
-            ps.setString(9, artefacto.getClase());
-            ps.setInt(10, artefacto.getIdArtefacto());
+            ps.setString(7, artefacto.getImg());
+            ps.setString(8, artefacto.getClase());
+            ps.setInt(9, artefacto.getIdArtefacto());
+            
             ps.executeUpdate();
 
         } catch (SQLException e) {

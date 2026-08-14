@@ -47,3 +47,15 @@ function pedirClave(tipo, id, accion) {
 function cerrarModalClave() {
     document.getElementById('modal-clave-accion').style.display = 'none';
 }
+function filtrarTabla(elemento) {
+    const seccion = elemento.closest('.tabla-seccion');
+    const columna = parseInt(seccion.querySelector('.busqueda-columna').value);
+    const texto = seccion.querySelector('.busqueda-texto').value.toLowerCase();
+    const filas = seccion.querySelectorAll('tbody tr');
+
+    filas.forEach(fila => {
+        const celda = fila.children[columna];
+        if (!celda) return;
+        fila.style.display = celda.textContent.toLowerCase().includes(texto) ? '' : 'none';
+    });
+}
